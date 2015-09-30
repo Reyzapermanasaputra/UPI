@@ -40,18 +40,18 @@
 
  <div class="input-group input-group-lg">
     <%= f.label :address %>
-    <%= f.text_field :address, placeholder: "Address", class: "form-control", required: true %>
+    <%= f.text_field :address, placeholder: "Address", class: "form-control" %>
   </div><br>
 
    <div class="input-group input-group-lg">
     <%= f.label :password %>
-    <%= f.password_field :password, placeholder: "Can't be blank",class: "form-control", required: true  %>
+    <%= f.password_field :password, placeholder: "Can't be blank",class: "form-control"%>
   </div><br>
 
   <% if admin? && @user %>
   <div class="field"><br />
     <%= f.label "role" %><br>
-    <%= collection_select(:user, :role_id, Role.all, :id, :name, {prompt: true }, required: true) %>
+    <%= collection_select(:user, :role_id, Role.all, :id, :name, {prompt: true }) %>
   </div><br>
   <% end %>
   <div class="actions">

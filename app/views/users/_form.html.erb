@@ -14,44 +14,44 @@
    <% if admin? && @user %>
    <div class="input-group input-group-lg">
     <%= f.label :id %>
-    <%= f.number_field :identity, placeholder: "Id", class: "form-control"%>
+    <%= f.number_field :identity, placeholder: "Id", class: "form-control", required: true%>
   </div><br>
 
   <div class="input-group input-group-lg">
     <%= f.label :name %>
-    <%= f.text_field :name, placeholder: "Name", class: "form-control"%>
+    <%= f.text_field :name, placeholder: "Name", class: "form-control", required: true %>
   </div><br>
   <% end %>
   <div class="field">
     <%= f.label :photo %>
-    <%= f.file_field :photo %>
+    <%= f.file_field :photo, required: true %>
   </div><br>
 
 
   <div class="input-group input-group-lg">
     <%= f.label :email %>
-    <%= f.email_field :email, placeholder: "Email", class: "form-control"%>
+    <%= f.email_field :email, placeholder: "Email", class: "form-control", required: true%>
   </div><br>
 
   <div class="input-group input-group-lg">
     <%= f.label :phone %>
-    <%= f.number_field :phone, placeholder: "Phone",  class: "form-control" %>
+    <%= f.number_field :phone, placeholder: "Phone",  class: "form-control", required: true %>
   </div><br>
 
  <div class="input-group input-group-lg">
     <%= f.label :address %>
-    <%= f.text_field :address, placeholder: "Address", class: "form-control" %>
+    <%= f.text_field :address, placeholder: "Address", class: "form-control", required: true %>
   </div><br>
 
    <div class="input-group input-group-lg">
     <%= f.label :password %>
-    <%= f.password_field :password, placeholder: "Can't be blank",class: "form-control"%>
+    <%= f.password_field :password, placeholder: "Can't be blank",class: "form-control", required: true  %>
   </div><br>
 
   <% if admin? && @user %>
   <div class="field"><br />
     <%= f.label "role" %><br>
-    <%= collection_select(:user, :role_id, Role.all, :id, :name, {prompt: true }) %>
+    <%= collection_select(:user, :role_id, Role.all, :id, :name, {prompt: true }, required: true) %>
   </div><br>
   <% end %>
   <div class="actions">
