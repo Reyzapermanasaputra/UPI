@@ -16,7 +16,7 @@
   <%= f.fields_for :tasks do |task_form| %>
   <% for choice in question.choices %>
     <p class="choice">
-      <%= task_form.radio_button :answer, choice.text %>
+      <%= task_form.radio_button :answer, choice.text, required: true %>
       <%= f.label "choice_".concat(choice.id.to_s).to_sym, choice.text %>
     <br />
     </p>

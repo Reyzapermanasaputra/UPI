@@ -16,15 +16,22 @@ before_filter :authenticate_user!
   end
 
   def report
-   @topic = Topic.find(params[:topic_id])
-   @evaluation = @topic.evaluations.find(params[:evaluation_id])
-   @quiz = @evaluation.quizzes.all.order('id ASC')
+   unless params[:search].blank?
+     @topic = Topic.find(params[:topic_id])
+     @evaluation = @topic.evaluations.find(params[:evaluation_id])
+     @selected_date = Date.parse(params[:search])
+     @quiz = @evaluation.quizzes.where(:updated_at => @selected_date.beginning_of_day..@selected_date.end_of_day)
+     else
+     @topic = Topic.find(params[:topic_id])
+     @evaluation = @topic.evaluations.find(params[:evaluation_id])
+     @quiz = @evaluation.quizzes.all.order('id ASC')
+    end
   end
 
   def start
     @topic = Topic.find(params[:topic_id])
     @evaluation = @topic.evaluations.find(params[:id])
-    @question = @evaluation.questions
+    @question = @evaluation.questions.find(:all, :include => :choices)
     all = @question.map {|x| x.id}
 
     session[:total]   = all.count

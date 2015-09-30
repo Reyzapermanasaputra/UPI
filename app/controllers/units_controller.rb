@@ -2,7 +2,7 @@ class UnitsController < ApplicationController
   load_and_authorize_resource except: :create
   def index
    @topic = Topic.find(params[:topic_id])
-   @units = @topic.units.order('id ASC')
+   @units = @topic.units.order('id ASC').includes(:user)
   end
 
   def new

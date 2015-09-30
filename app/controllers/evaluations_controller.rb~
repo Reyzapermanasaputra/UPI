@@ -6,7 +6,7 @@ class EvaluationsController < ApplicationController
   # GET /evaluations.json
   def index
     @topic = Topic.find(params[:topic_id])
-    @evaluations = @topic.evaluations
+    @evaluations = @topic.evaluations.find(:all, :include => :quizzes)
   end
 
   # GET /evaluations/1
