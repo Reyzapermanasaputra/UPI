@@ -349,7 +349,7 @@ aside {
 /* question (/quiz/question) page */
 .choice {font-size: 16px; margin: 0; }
 .choice:hover {background-color: #ffdb73;}
-.choice label {width: 400px; display: inline-block; padding: 0px 0 0px 0; margin: 0;}
+.choice label {width: 400px; display: inline-block; padding: 10px 0 10px 0; margin: 0;}
 
 /* feedback (/quiz/answer) page */
 .correct {background-color: #64de89;}

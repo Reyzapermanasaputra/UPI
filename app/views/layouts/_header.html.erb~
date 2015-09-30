@@ -8,7 +8,7 @@
       </a>
       <div class="nav-collapse">
         <ul class="nav pull-left">
-          <li><%= link_to root_path do %><em class="fa fa-language fa-2x "></em><span> English Education Department</span><% end %></li>
+          <li><%= link_to root_path do %><em class="fa fa-frown-o fa-2x "></em><span> Bro Learning Application</span><% end %></li>
         </ul>
         <ul class="nav pull-right">
           <% if user_signed_in? %>
