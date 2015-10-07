@@ -38,7 +38,6 @@ Rails.application.routes.draw do
            resources :quizzes do
              collection do
   	       get '/report', to: 'quizzes#report', as: :report_quizzes
-               get '/report' => "quizzes#search", :as => :search
 	     end
              resources :scores
            end
