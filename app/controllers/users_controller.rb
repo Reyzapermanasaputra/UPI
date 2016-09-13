@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  autocomplete :user, :name, :full => true
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, except: [:show, :update]
   load_and_authorize_resource except: [:show, :following, :followers]
@@ -12,6 +13,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def search_user
+    @users = User.search(params[:search]).order('created_at DESC')
+    user = @users.map{|x| x.id}
+    puts '*' * 50
+    puts user
+    puts '*' * 50
+    @user = User.find(user)
+    redirect_to user_url(@user)
+  end
+
   def add_room
     @user = User.find(params[:id])
     @classrooms = Classroom.where(:id=> params[:adding_class])
@@ -23,10 +34,10 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.find(params[:id])
-    @room = @user.classrooms
-    @microposts = @user.microposts.order('created_at DESC')
-    @joined_on = @user.created_at.to_formatted_s(:short)
+      @user = User.find(params[:id])
+      @room = @user.classrooms
+      @microposts = @user.microposts.order('created_at DESC')
+      @joined_on = @user.created_at.to_formatted_s(:short)
       if @user.current_sign_in_at
         @last_login = @user.current_sign_in_at.to_formatted_s(:short)
       else

@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   patch "/users/:id", :to => 'users#add_room'
   resources :classrooms
   root to: 'static_pages#home'
+  get 'users/autocomplete_user_name'
+  get 'users/search_user' => "users#search_user"
   get "mailbox/inbox" => "mailbox#inbox", as: :mailbox_inbox
   get "mailbox/sent" => "mailbox#sent", as: :mailbox_sent
   get "mailbox/trash" => "mailbox#trash", as: :mailbox_trash

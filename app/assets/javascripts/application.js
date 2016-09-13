@@ -13,9 +13,21 @@
 //= require jquery
 //= require jquery_nested_form
 //= require jquery_ujs
+//= require jquery-ui
+//= require jquery-ui/autocomplete
+//= require autocomplete-rails
 //= require twitter/bootstrap
 //= require bootstrap
 //= require ckeditor/init
 //= require bootstrap-datepicker
 //= require dataTables/jquery.dataTables
+//= require semantic-ui
+//= require semantic-ui/modal
+//= require semantic-ui/dropdown
 //= require_tree .
+$('.context.example .ui.sidebar')
+  .sidebar({
+    context: $('.context.example .bottom.segment')
+  })
+  .sidebar('attach events', '.context.example .menu .item')
+;

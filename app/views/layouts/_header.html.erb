@@ -1,4 +1,4 @@
-<div class="navbar navbar-fixed-top">
+<!-- <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
       <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -33,9 +33,9 @@
                   <ul class="dropdown-menu">
                     <li><%= current_user.name %></li>
                     <% if user_signed_in? and current_user.role.name=="Admin" %>
-		    <li><%= link_to "Manage User", users_path, :class => "btn btn-default" %></li>
+        <li><%= link_to "Manage User", users_path, :class => "btn btn-default" %></li>
                     <li><%= link_to "Manage Role", roles_path, :class => "btn btn-default" %></li>
-		    <li><%= link_to "Manage Classroom", classrooms_path, :class => "btn btn-default" %></li>
+        <li><%= link_to "Manage Classroom", classrooms_path, :class => "btn btn-default" %></li>
                     <% end %>
                     </li>
                     <li><%= link_to destroy_user_session_path, :method => :delete do %>
@@ -58,3 +58,185 @@
     </div>
   </div>
 </div>
+ -->
+ <div class="ui top fixed menu">
+  <a class="item">
+    <i class="sidebar icon"></i>
+    Menu
+  </a>
+   <div class="right menu">
+    <div class="itxem">
+      <div class="ui transparent icon input">
+        <%= form_tag(users_search_user_path, :method => "get", id: "search-form") do %>
+        <%= text_field_tag :search, params[:search], class: "search-query", placeholder: "search users..", type: "search", data: {autocomplete: users_autocomplete_user_name_path} %> 
+        <i class="search link icon"></i>
+        <% end %>
+        <script type="text/javascript" charset="utf-8">
+        $('#search').bind('railsAutocomplete.select', function(event, data){
+        $('#search-form').submit();
+        });
+</script>
+      </div>
+    </div>
+  </div>
+
+</div>
+<br />
+<br />
+<br />
+
+<div class="ui right demo sidebar vertical inverted `u">
+  <a class="header item">File Permissions</a>
+  <a class="item">Share on Social</a>
+  <a class="item">Share by E-mail</a>
+  <a class="item">Edit Permissions</a>
+  <a class="item">Delete Permanently</a>
+</div>
+
+<div class="ui left demo vertical inverted labeled icon sidebar menu">
+  <a class="item">
+    <i class="home icon"></i>
+    Home
+  </a>
+  <a class="item">
+    <i class="block layout icon"></i>
+    Roles
+  </a>
+  <a class="item">
+    <i class="smile icon"></i>
+    Users
+  </a>
+  <a class="item">
+    <i class="calendar icon"></i>
+    Class
+  </a>
+  <a class="item">
+    <i class="mail icon"></i>
+    Messages
+  </a>
+  <a class="item">
+    <i class="chat icon"></i>
+    Discussions
+  </a>
+  <a class="item">
+    <i class="trophy icon"></i>
+    Achievements
+  </a>
+  <a class="item">
+    <i class="shop icon"></i>
+    Store
+  </a>
+  <a class="item">
+    <i class="settings icon"></i>
+    Settings
+  </a>
+</div>
+
+<div class="ui top demo sidebar ui segment">
+  <div class="ui center aligned page grid">
+    <div class="one column row">
+      <div class="sixteen wide column">
+        <h3 class="ui header">New Content Awaits</h3>
+      </div>
+    </div>
+    <div class="three column divided row">
+      <div class="column">
+        <img class="ui wireframe image" src="/images/wireframe/media-paragraph.png">
+      </div>
+      <div class="column">
+        <img class="ui wireframe image" src="/images/wireframe/media-paragraph.png">
+      </div>
+      <div class="column">
+        <img class="ui wireframe image" src="/images/wireframe/media-paragraph.png">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ui bottom demo inverted nine item labeled icon sidebar menu">
+  <a class="item">
+    <i class="home icon"></i>
+    Home
+  </a>
+  <a class="item">
+    <i class="block layout icon"></i>
+    Manage Users
+  </a>
+  <a class="item">
+    <i class="smile icon"></i>
+    Manage Roles
+  </a>
+  <a class="item">
+    <i class="calendar icon"></i>
+    Manage Classrooms
+  </a>
+  <a class="item">
+    <i class="mail icon"></i>
+    Messages
+  </a>
+  <a class="item">
+    <i class="chat icon"></i>
+    Discussions
+  </a>
+  <a class="item">
+    <i class="trophy icon"></i>
+    Achievements
+  </a>
+  <a class="item">
+    <i class="shop icon"></i>
+    Store
+  </a>
+  <a class="item">
+    <i class="settings icon"></i>
+    Settings
+  </a>
+</div>
+
+
+
+<script type="text/javascript">
+$(document)
+  .ready(function() {
+    $('.sidebar.direction.demo')
+      .find('.buttons .button')
+        .on('click', function() {
+          var
+            direction = $(this).data('direction')
+          ;
+          $(this).addClass('active').siblings().removeClass('active');
+          if(direction === 'top' || direction === 'bottom') {
+            $('.horizontal.button').addClass('disabled');
+          }
+          else {
+            $('.horizontal.button').removeClass('disabled');
+          }
+        })
+        .end()
+        .children('.button')
+        .on('click', function() {
+          var
+            transition = $(this).data('transition'),
+            direction  = $('.sidebar.direction.demo .buttons .button.active').data('direction'),
+            dimPage    = $('.sidebar.direction.demo .dim').checkbox('is checked')
+          ;
+          if( $(this).filter('.disabled').size() === 0) {
+            $('.' + direction + '.demo.sidebar')
+              .not('.styled')
+              .sidebar('setting', {
+                dimPage          : dimPage,
+                transition       : transition,
+                mobileTransition : transition
+              })
+            ;
+            $('.' + direction + '.demo.sidebar').not('.styled').sidebar('toggle');
+          }
+        })
+    ;
+  })
+;
+$(".item").on('click', function(){
+  $('.ui.labeled.icon.sidebar')
+  .sidebar('toggle')
+;
+})
+</script>

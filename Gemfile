@@ -17,6 +17,11 @@ gem 'bootstrap-datepicker-rails'
 gem 'thin'
 gem 'chartkick'
 gem 'ransack'
+gem 'newrelic_rpm', '~> 3.16.2.321'
+gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
+gem 'rails-jquery-autocomplete'
+gem 'jquery-ui-rails'
+gem 'awesome_print', :require => 'ap'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 # Use postgresql as the database for Active Record
@@ -53,7 +58,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development, :test do
   # Call 'debugger' anywhere in the code to stop execution and get a debugger console
-  gem 'debugger'
+  #gem 'debugger'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
